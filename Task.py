@@ -19,7 +19,9 @@ class TaskFunctions():
         new_task = db.Task(message)
         db.session.add(new_task)
         db.session.commit()
-        return "Task created successfully"
+        lastTask = db.session.query(db.Task).order_by(db.Task.id.desc()).first()
+        # print(taskQuery)
+        return lastTask.id
 
     def getAllTasks(self):  
         queryRes = db.session.query(db.Task)
@@ -32,8 +34,8 @@ class TaskFunctions():
         taskQuery = db.session.query(db.Task).filter(db.Task.id == taskId).delete()
         if taskQuery:
             db.session.commit()
-            return "Task has been deleted sucessfully"
-        return f"Couldn't find task with such ID {taskId}"
+            return 0
+        return -1
 
 
     def updateTask(self, taskId, newMessage):

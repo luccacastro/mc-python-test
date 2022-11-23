@@ -5,7 +5,6 @@ from sqlalchemy import Column, Integer, String, DateTime, Boolean, Text
 from sqlalchemy.orm import sessionmaker
 
 
-engine = create_engine('sqlite:///sqlalchemy.sqlite')
 Base = declarative_base()
 
 class Task(Base):
@@ -18,6 +17,8 @@ class Task(Base):
     def __init__(self, message):
         self.message = message
 
+
+engine = create_engine('sqlite:///sqlalchemy.sqlite')
 Session = sessionmaker(bind=engine)
 session = Session()
 
