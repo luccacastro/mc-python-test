@@ -1,5 +1,5 @@
 
-# Mitigate Cyber Python Test
+# Company Python Test
 
 This is a small backend script used for create, delete, update and show all tasks in a database.
 ## Installation
